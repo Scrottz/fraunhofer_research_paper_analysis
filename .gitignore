@@ -1,2 +1,6 @@
 pdf/*
 !pdf/.gitkeep
+
+assets/**/*
+!assets/**/
+!assets/**/.gitkeep
