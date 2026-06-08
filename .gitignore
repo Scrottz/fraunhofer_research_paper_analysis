@@ -6,4 +6,4 @@ assets/**/*
 !assets/**/.gitkeep
 
 excerpts/pdf/*
-!excerpts/pdf/.gitignore
+!excerpts/pdf/.gitkeep
