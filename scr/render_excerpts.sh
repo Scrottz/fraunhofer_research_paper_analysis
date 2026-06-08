@@ -32,9 +32,9 @@ for file in "$SRC_DIR"/*.md; do
         -o "$OUT_DIR/$filename.pdf" \
         --pdf-engine=weasyprint \
         --css="$CSS_FILE" \
-        --resource-path="$PROJECT_ROOT" \
-        --metadata title="$filename"
-    
+        --resource-path="$PROJECT_ROOT"
+
+
     ((count++))
 done
 
