@@ -1,10 +1,18 @@
+
 /* ==========================================================================
    RESEARCH EXCERPT STYLES
    ========================================================================== */
 
 @page {
     size: A4;
-    margin: 2.5cm 2cm;
+    margin: 2.5cm 2cm 3cm 2cm; /* Unterer Rand auf 3cm für die Seitenzahl */
+
+    @bottom-right {
+        content: "Page " counter(page);
+        font-family: "Arial", sans-serif;
+        font-size: 9pt;
+        color: #888888;
+    }
 }
 
 body {
@@ -38,6 +46,24 @@ h2 {
     line-height: 1.2;
 }
 
+h3 {
+    font-family: "Arial", sans-serif;
+    font-size: 14pt;
+    color: #34495e;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    font-weight: bold;
+}
+
+h4 {
+    font-family: "Arial", sans-serif;
+    font-size: 12pt;
+    color: #555555;
+    margin-top: 1.2em;
+    margin-bottom: 0.6em;
+    font-style: italic;
+}
+
 /* --- Layout Elements --- */
 blockquote {
     font-style: italic;
@@ -55,18 +81,54 @@ hr {
     margin: 2em 0;
 }
 
-ul {
-    margin-bottom: 1.5em;
+/* --- Lists --- */
+ul, ol {
+    margin-bottom: 1em;
     padding-left: 1.5em;
 }
 
 li {
-    margin-bottom: 8px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+li p {
+    margin: 0;
+    padding: 0;
 }
 
 strong {
     color: #000000;
     font-weight: 600;
+}
+
+/* --- Tables (Academic Style) --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2em 0;
+    font-family: "Arial", sans-serif;
+    font-size: 10pt;
+}
+
+th {
+    border-top: 2px solid #2c3e50;
+    border-bottom: 2px solid #2c3e50;
+    padding: 10px;
+    text-align: left;
+    background-color: #fcfcfc;
+    color: #1a1a1a;
+    font-weight: bold;
+}
+
+td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #eeeeee;
+    vertical-align: top;
+}
+
+tr:last-child td {
+    border-bottom: 2px solid #2c3e50;
 }
 
 /* --- Media Assets --- */
@@ -79,4 +141,68 @@ img {
     padding: 8px;
     background-color: #ffffff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Optimierung für hochgestellte Zahlen (Zitate) */
+sup {
+    font-size: 0.75em;
+    line-height: 0;
+    vertical-align: super;
+    margin-left: 2px;
+}
+
+/* --- Footnotes --- */
+.footnotes {
+    margin-top: 3em;
+    padding-top: 1em;
+    border-top: 1px solid #cccccc;
+    font-size: 9pt;
+    color: #666666;
+}
+
+.footnotes ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: footnote-counter;
+}
+
+.footnotes li {
+    counter-increment: footnote-counter; /* FIX: Slashes entfernt */
+    margin-bottom: 0.2em;
+    position: relative;
+    padding-left: 1.2em;
+}
+
+.footnotes li p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.1;
+}
+
+.footnotes li::before {
+    content: counter(footnote-counter);
+    font-size: 0.75em;
+    vertical-align: super;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* --- Author Affiliations --- */
+.affiliations {
+    font-family: "Georgia", serif;
+    font-size: 9pt;
+    color: #666666;
+    margin-bottom: 2em;
+    line-height: 1.4;
+    text-align: left;
+    display: block; /* Erzwingt Block-Verhalten */S
+}
+
+.affiliations sup {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-right: 4px;
 }

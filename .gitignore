@@ -5,5 +5,3 @@ assets/**/*
 !assets/**/
 !assets/**/.gitkeep
 
-excerpts/pdf/*
-!excerpts/pdf/.gitkeep
