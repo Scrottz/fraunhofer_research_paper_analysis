@@ -1,7 +1,6 @@
-pdf/*
-!pdf/.gitkeep
+# Urheberrecht-geschützte Dokumente
+doc/papers/*.pdf
 
-assets/**/*
-!assets/**/
-!assets/**/.gitkeep
-
+# Asset-Bilder und PDFs (Lizenz-unklar)
+doc/assets/**/*.pdf
+doc/assets/**/*.png

@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 PROJECT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null)
@@ -8,9 +7,10 @@ if [ -z "$PROJECT_ROOT" ]; then
     exit 1
 fi
 
-SRC_DIR="$PROJECT_ROOT/presentations/md"
-OUT_DIR="$PROJECT_ROOT/presentations/pdf"
-CSS_FILE="$PROJECT_ROOT/css/presentation.css"
+SRC_DIR="$PROJECT_ROOT/doc/presentation"
+OUT_DIR="$PROJECT_ROOT/build/presentation"
+CSS_FILE="$PROJECT_ROOT/lib/css/presentation.css"
+FILTER_FILE="$PROJECT_ROOT/lib/footer.lua"
 
 mkdir -p "$OUT_DIR"
 
@@ -29,6 +29,7 @@ for file in "$SRC_DIR"/*.md; do
         -o "$OUT_DIR/$filename.pdf" \
         --pdf-engine=weasyprint \
         --css="$CSS_FILE" \
+        --lua-filter="$FILTER_FILE" \
         --resource-path="$PROJECT_ROOT"
 
     ((count++))

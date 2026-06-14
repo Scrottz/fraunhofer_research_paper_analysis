@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 PROJECT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null)
@@ -8,13 +7,13 @@ if [ -z "$PROJECT_ROOT" ]; then
     exit 1
 fi
 
-SRC_DIR="$PROJECT_ROOT/excerpts/md"
-OUT_DIR="$PROJECT_ROOT/excerpts/pdf"
-CSS_FILE="$PROJECT_ROOT/css/excerpt.css"
+SRC_DIR="$PROJECT_ROOT/doc/excerpts"
+OUT_DIR="$PROJECT_ROOT/build/excerpts"
+CSS_FILE="$PROJECT_ROOT/lib/css/excerpt.css"
 
 mkdir -p "$OUT_DIR"
 
-echo "Starting PDF rendering..."
+echo "Starting Excerpt PDF rendering..."
 echo "--------------------------------------------------"
 
 count=0
@@ -25,18 +24,14 @@ for file in "$SRC_DIR"/*.md; do
     
     echo "Processing: $filename ..."
     
-    # Wir nutzen das Standard-Template von Pandoc.
-    # --css fügt das Design hinzu.
-    # --resource-path löst die Bild-Pfade relativ zum Root.
     pandoc "$file" \
         -o "$OUT_DIR/$filename.pdf" \
         --pdf-engine=weasyprint \
         --css="$CSS_FILE" \
         --resource-path="$PROJECT_ROOT"
 
-
     ((count++))
 done
 
 echo "--------------------------------------------------"
-echo "Done. $count PDFs generated in $OUT_DIR/"
+echo "Done. $count PDF(s) generated in $OUT_DIR/"

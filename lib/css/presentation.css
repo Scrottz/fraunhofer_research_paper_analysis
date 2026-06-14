@@ -1,0 +1,227 @@
+
+/* ==========================================================================
+   PRESENTATION STYLES - 16:9 SLIDES (WeasyPrint Compatible)
+   ========================================================================== */
+
+@page {
+    size: 1920px 1080px;
+    margin: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Arial", "Helvetica", sans-serif;
+    background: #ffffff;
+    color: #333333;
+}
+
+/* --- SLIDE CONTAINER --- */
+.slide {
+    width: 1920px;
+    height: 1080px;
+    page-break-after: always;
+    position: relative;
+    display: block;
+    padding: 80px 120px 80px 120px;
+    background: #ffffff;
+}
+
+/* --- TITLE SLIDE --- */
+.slide.title {
+    padding: 120px 120px 80px 120px;
+    text-align: center;
+}
+
+.slide.title h1 {
+    font-size: 72pt;
+    font-weight: bold;
+    color: #009B77;
+    margin-top: 150px;
+    margin-bottom: 250px;
+    letter-spacing: -1px;
+    line-height: 1.3;
+}
+
+.slide.title .speaker-info {
+    position: absolute;
+    bottom: 150px;
+    left: 120px;
+    text-align: left;
+}
+
+.slide.title .speaker-info .name {
+    font-size: 28pt;
+    color: #000000;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.slide.title .speaker-info .date {
+    font-size: 28pt;
+    color: #595959;
+}
+
+/* --- CONTENT SLIDES --- */
+.slide.content {
+    padding-bottom: 150px;
+}
+
+.slide.content h1 {
+    font-size: 54pt;
+    color: #009B77;
+    margin-bottom: 40px;
+    border-bottom: 3px solid #009B77;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+.slide.content h2 {
+    font-size: 36pt;
+    color: #595959;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.slide.content h3 {
+    font-size: 28pt;
+    color: #7a7a7a;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.slide.content p {
+    font-size: 24pt;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #333333;
+}
+
+.slide.content ul,
+.slide.content ol {
+    font-size: 24pt;
+    line-height: 1.7;
+    margin-left: 60px;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.slide.content li {
+    margin-bottom: 12px;
+}
+
+.slide.content strong {
+    color: #000000;
+    font-weight: 600;
+}
+
+/* --- FOOTER --- */
+
+.footer-content {
+    position: absolute;
+    bottom: 60px;  /* war 30px, jetzt 60px */
+    left: 120px;
+    right: 120px;
+    border-top: 1px solid #eeeeee;
+    padding-top: 15px;
+    font-size: 30px;
+    color: #888888;
+    width: calc(100% - 240px);
+    height: 40px;
+}
+
+.footer-cell {
+    position: absolute;
+    top: 15px;
+    width: 33.33%;
+    height: 40px;
+    display: block;
+    line-height: 40px;
+}
+
+.footer-cell.left {
+    left: 0;
+    text-align: left;
+}
+
+.footer-cell.center {
+    left: 33.33%;
+    text-align: center;
+}
+
+.footer-cell.right {
+    right: 0;
+    text-align: right;
+}
+
+/* --- IMAGES --- */
+.slide img {
+    max-width: 90%;
+    max-height: 600px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #eeeeee;
+}
+
+/* --- TABLES --- */
+.slide table {
+    width: 100%;
+    font-size: 18pt;
+    border-collapse: collapse;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.slide th {
+    background-color: #f5f5f5;
+    color: #009B77;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #009B77;
+    font-weight: bold;
+}
+
+.slide td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eeeeee;
+    color: #333333;
+}
+
+/* --- CLOSING SLIDE --- */
+.slide.closing {
+    background: linear-gradient(135deg, #009B77 0%, #00B89C 100%);
+    text-align: center;
+    padding: 300px 120px 120px 120px;
+    color: #ffffff;
+}
+
+.slide.closing h1 {
+    font-size: 64pt;
+    color: #ffffff;
+    margin-bottom: 100px;
+    font-weight: bold;
+    border: none;
+    padding: 0;
+    line-height: 1.3;
+}
+
+.slide.closing .contact {
+    font-size: 22pt;
+    color: #ffffff;
+    line-height: 1.8;
+}
+
+.slide.closing a {
+    color: #ffffff;
+    text-decoration: underline;
+    font-weight: bold;
+}
