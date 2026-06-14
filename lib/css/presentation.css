@@ -1,4 +1,3 @@
-
 /* ==========================================================================
    PRESENTATION STYLES - 16:9 SLIDES (WeasyPrint Compatible)
    ========================================================================== */
@@ -122,10 +121,9 @@ body {
 }
 
 /* --- FOOTER --- */
-
 .footer-content {
     position: absolute;
-    bottom: 60px;  /* war 30px, jetzt 60px */
+    bottom: 60px;
     left: 120px;
     right: 120px;
     border-top: 1px solid #eeeeee;
@@ -160,8 +158,47 @@ body {
     text-align: right;
 }
 
-/* --- IMAGES --- */
-.slide img {
+/* --- IMAGE SLIDES (WeasyPrint Compatible) --- */
+.slide.image-slide {
+    padding: 80px 120px 150px 120px;
+}
+
+.slide.image-slide h1 {
+    font-size: 54pt;
+    color: #009B77;
+    margin-bottom: 40px;
+    border-bottom: 3px solid #009B77;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+.slide.image-slide .image-container {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.slide.image-slide img {
+    max-width: 85%;
+    height: auto;
+    max-height: 550px;
+    display: inline-block;
+    border: 1px solid #eeeeee;
+}
+
+.slide.image-slide .image-caption {
+    font-size: 22pt;
+    color: #595959;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 25px;
+    max-width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- IMAGES (in content slides) --- */
+.slide.content img {
     max-width: 90%;
     max-height: 600px;
     margin-top: 30px;
@@ -198,15 +235,15 @@ body {
 
 /* --- CLOSING SLIDE --- */
 .slide.closing {
-    background: linear-gradient(135deg, #009B77 0%, #00B89C 100%);
+    background: #ffffff;
     text-align: center;
     padding: 300px 120px 120px 120px;
-    color: #ffffff;
+    color: #333333;
 }
 
 .slide.closing h1 {
     font-size: 64pt;
-    color: #ffffff;
+    color: #009B77;
     margin-bottom: 100px;
     font-weight: bold;
     border: none;
@@ -214,14 +251,22 @@ body {
     line-height: 1.3;
 }
 
+.slide.closing h2 {
+    font-size: 36pt;
+    color: #595959;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
 .slide.closing .contact {
     font-size: 22pt;
-    color: #ffffff;
+    color: #333333;
     line-height: 1.8;
 }
 
 .slide.closing a {
-    color: #ffffff;
+    color: #009B77;
     text-decoration: underline;
     font-weight: bold;
 }
