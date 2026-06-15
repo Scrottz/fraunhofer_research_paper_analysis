@@ -5,10 +5,11 @@ footer-center-text: ""
 
 ::: {.slide .title}
 
-# Fraunhofer IAIS Research Paper Discussion
+# **Scaling Synthetic Data for LLM Pre-Training**  
 
-## **Scaling Synthetic Data for LLM Pre-Training:**  
-### Von Web-Filterung zu Instruction-Tuning
+## Von Web-Filterung zu Instruction-Tuning
+## Fraunhofer IAIS 
+
 
 ::: {.speaker-info}
 ::: {.name}
@@ -190,7 +191,7 @@ Größere Datenmengen führen zu besserer Generalisierung, reduzieren Overfittin
 # RefinedWeb: Experimente & Results
 
 ::: {.image-container}
-![](doc/no_doc/assetsts/2306.01116v01/figure_1.png)
+![](nodoc/assets/2306.01116v01/figure_1.png)
 
 ::: {.image-caption}
 Models trained on RefinedWeb EB alone outperform models trained on curated corpora
@@ -286,7 +287,7 @@ across the board**
 # Paper 2: Nemotron-CC
 
 ::: {.image-container}
-![](doc/no_doc/assetsts/2412.02595v2/figure_1.png)
+![](nodoc/assets/2412.02595v2/figure_1.png)
 
 ::: {.image-caption}
 MMLU scores for 8B parameter models trained for 1T tokens.
@@ -630,7 +631,7 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 # FineInstructions: Methoden (Pipeline)
 
 ::: {.image-container}
-![](doc/no_doc/assetsts/2601.22146v1/figure_2.png)
+![](nodoc/assets/2601.22146v1/figure_2.png)
 
 ::: {.image-caption}
 The FineInstructions pipeline for efficiently generating diverse, pre-training scale, synthetic instruction-answer pairs.
@@ -724,7 +725,7 @@ AlpacaEval: Win margin for FineInstructions (higher = better)
 # FineInstructions: Diversity Analysis
 
 ::: {.image-container}
-![](doc/no_doc/assetsts/2601.22146v1/all_sunburst.png)
+![](nodoc/assets/2601.22146v1/all_sunburst.png)
 
 ::: {.image-caption}
 A visualization of the task diversity in FineInstructions
@@ -874,14 +875,9 @@ XXX consider XXX following risk factors
 |--------|---------------------|-------------------------|
 | **Templates/Frames** | 152K signifikante Frames → 24.654 Cluster | 18M Templates → 1B+ Instruction-Paare |
 | **Dokumente** | 4.456 Risikoberichte (478 Unternehmen × 10 Jahre) | ~100K Pre-Training-Dokumente |
-| **Erfolgsrate** | 81/478 Unternehmen (16.9%) mit signifikanter Korrelation (Return on no_doc/assetsts) | MMLU +5.6 vs. DCLM (1T), +5.0 vs. Llama 3.1 (15T) |
+| **Erfolgsrate** | 81/478 Unternehmen (16.9%) mit signifikanter Korrelation (Return on assets) | MMLU +5.6 vs. DCLM (1T), +5.0 vs. Llama 3.1 (15T) |
 | **Reproduzierbarkeit** | Vollständige Perl-Skripte, dokumentierte Algorithmen | LLM-Prompts unvollständig, Entity-Replacement undokumentiert |
 | **Skalierungs-Strategie** | Levenshtein-Clustering (Edit-Distanz ≤2) | Distillation (70B → 1B/3B) + FAISS-Index |
-
-| | Masterarbeit (2017) | FineInstructions (2025) |
-|---|---|---|
-| Ansatz | Regelbasiert, transparent | LLM-basiert, Black Box |
-| Performance | Rechenintensiv | Skalierbar |
 
 :::
 
