@@ -23,15 +23,39 @@ Franz Keilholz, MA.
 
 ---
 
+::: {.slide .content footer-center-text="Literatur"}
+
+# Literaturverzeichnis & Zitationen
+
+## Paper 1: RefinedWeb
+
+Penedo, G., Malartic, Q., Hesslow, D., Cojocaru, R., Cappelli, A., Alobeidli, H., Pannier, B., Almazrouei, E., and Launay, J. (2023). 'The RefinedWeb Dataset for Falcon LLM: Outperforming Curated Corpora with Web Data, and Web Data Only'. arXiv:2306.01116. doi: 10.48550/arXiv.2306.01116
+
+## Paper 2: Nemotron-CC
+
+Su, D., Kong, K., Lin, Y., Jennings, J., Norick, B., Kliegl, M., Patwary, M., Shoeybi, M., and Catanzaro, B. (2024). 'Nemotron-CC: Transforming Common Crawl into a Refined Long-Horizon Pretraining Dataset'. arXiv:2412.02595. doi: 10.48550/arXiv.2412.02595
+
+## Paper 3: FineInstructions
+
+Patel, A., Raffel, C., and Callison-Burch, C. (2025). 'FineInstructions: Scaling Synthetic Instructions to Pre-Training Scale'. arXiv:2601.22146. doi: 10.48550/arXiv.2601.22146
+
+:::
+
+---
+
 ::: {.slide .content footer-center-text="Einleitung"}
 
 # Motivation: Das Data-Bottleneck Problem
 
 ## LLM Training braucht Billionen von Tokens
 
+Größere Datenmengen führen zu besserer Generalisierung, reduzieren Overfitting und ermöglichen es dem Modell, komplexere Muster zu lernen.
+
 - **Llama 3.1** (8B–405B): 15T Tokens
 - **Gemma 2** (27B): 13T Tokens
-- **Problem**: Aggressive Filterung entfernt 90% der Daten
+
+## Problem: Aggressive Filterung entfernt Großteil der Daten
+
   - FineWeb-Edu: 1.3T → **0.2T unique tokens** (80% Duplikate)
   - DCLM: 3.8T → **1.0T unique tokens** (80% Duplikate)
 
@@ -43,7 +67,7 @@ Franz Keilholz, MA.
 
 # Motivation: Das Data-Bottleneck Problem
 
-## Drei Papers, ein Ziel: Mehr nutzbare Daten
+## Drei Paper, ein Ziel: Mehr nutzbare Daten
 
 **Pipeline-Evolution**
 
@@ -60,7 +84,7 @@ Franz Keilholz, MA.
 
 ::: {.slide .content footer-center-text="Einleitung"}
 
-# Research Goals: Zusammenhänge der drei Papers
+# Research Goals: Zusammenhänge der drei Paper
 
 ## Chronologische & konzeptionelle Progression
 
@@ -76,23 +100,29 @@ Franz Keilholz, MA.
 
 ::: {.slide .content footer-center-text="Einleitung"}
 
-# Research Goals: Zusammenhänge der drei Papers
+# Research Goals: Zusammenhänge der drei Paper
 
 ## Gemeinsamer Nenner
 
-- **Alle nutzen CommonCrawl** als Basis
-- **Alle kämpfen gegen Duplikate** (Memorization vs. Generalization)
+- **CommonCrawl**
+
+    - Wird von RefinedWeb und Nemotron explizit und FineInstruction implizit genutzt
+
+- **Alle kämpfen gegen Duplikate** 
+
+  - Memorization vs. Generalization
+
 - **Progression**: Minimal → Moderate → Maximal Transformation
 
 :::
 
 ---
 
-::: {.slide .content footer-center-text="Paper 1: RefinedWeb"}
+::: {.slide .content footer-center-text="RefinedWeb"}
 
 # Paper 1: RefinedWeb (Falcon LLM)
 
-**Penedo et al., 2023 | TII Abu Dhabi + LightOn**
+**Penedo et al., 2023**
 
 ## Ausgangslage
 
@@ -113,7 +143,7 @@ Franz Keilholz, MA.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 1: RefinedWeb"}
+::: {.slide .content footer-center-text="RefinedWeb"}
 
 # RefinedWeb: Methoden (MDR Pipeline)
 
@@ -133,7 +163,7 @@ Franz Keilholz, MA.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 1: RefinedWeb"}
+::: {.slide .content footer-center-text="RefinedWeb"}
 
 # RefinedWeb: Deduplication Details
 
@@ -148,30 +178,19 @@ Franz Keilholz, MA.
 
 **Methode**: Suffix Array → ≥50 Token Matches → Remove/Mask/Drop
 
-:::
-
----
-
-::: {.slide .content footer-center-text="Paper 1: RefinedWeb"}
-
-# RefinedWeb: Experimente & Results
-
-## Setup
-
-- **Modelle**: 1B, 3B, 7B Parameter (GPT-3 Architektur + ALiBi)
-- **Training**: 27GT (1B), 60GT (3B), 350GT (7B)
-- **Baselines**: The Pile, C4, OSCAR-21/22
+- Suffix Arrays über konkatenierte Dokumente: 
+  - Jede Textposition wird zum Suffix-Startpunkt 
 
 :::
 
 ---
 
-::: {.slide .image-slide footer-center-text="Paper 1: RefinedWeb"}
+::: {.slide .image-slide footer-center-text="RefinedWeb"}
 
 # RefinedWeb: Experimente & Results
 
 ::: {.image-container}
-![](doc/assets/2306.01116v01/figure_1.png)
+![](doc/no_doc/assetsts/2306.01116v01/figure_1.png)
 
 ::: {.image-caption}
 Models trained on RefinedWeb EB alone outperform models trained on curated corpora
@@ -182,7 +201,7 @@ Models trained on RefinedWeb EB alone outperform models trained on curated corpo
 
 ---
 
-::: {.slide .content footer-center-text="Paper 1: RefinedWeb"}
+::: {.slide .content footer-center-text="RefinedWeb"}
 
 # RefinedWeb: Experimente & Results
 
@@ -203,7 +222,7 @@ Models trained on RefinedWeb EB alone outperform models trained on curated corpo
 
 ---
 
-::: {.slide .content footer-center-text="Paper 1: RefinedWeb"}
+::: {.slide .content footer-center-text="RefinedWeb"}
 
 # RefinedWeb: Ablations & Takeaways
 
@@ -225,7 +244,7 @@ across the board**
 
 ---
 
-::: {.slide .content footer-center-text="Paper 1: RefinedWeb"}
+::: {.slide .content footer-center-text="RefinedWeb"}
 
 # RefinedWeb: Ablations & Takeaways
 
@@ -239,11 +258,11 @@ across the board**
 
 ---
 
-::: {.slide .content footer-center-text="Paper 2: Nemotron-CC"}
+::: {.slide .content footer-center-text="Nemotron-CC"}
 
 # Paper 2: Nemotron-CC
 
-**Su et al., 2024 | NVIDIA**
+**Su et al., 2024**
 
 ## Ausgangslage
 
@@ -262,12 +281,12 @@ across the board**
 
 ---
 
-::: {.slide .image-slide footer-center-text="Paper 2: Nemotron-CC"}
+::: {.slide .image-slide footer-center-text="Nemotron-CC"}
 
 # Paper 2: Nemotron-CC
 
 ::: {.image-container}
-![](doc/assets/2412.02595v2/figure_1.png)
+![](doc/no_doc/assetsts/2412.02595v2/figure_1.png)
 
 ::: {.image-caption}
 MMLU scores for 8B parameter models trained for 1T tokens.
@@ -278,7 +297,7 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 2: Nemotron-CC"}
+::: {.slide .content footer-center-text="Nemotron-CC"}
 
 # Nemotron-CC: Methoden (3-Komponenten-Ansatz)
 
@@ -305,7 +324,7 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 2: Nemotron-CC"}
+::: {.slide .content footer-center-text="Nemotron-CC"}
 
 # Nemotron-CC: Model-Based Quality Labeling
 
@@ -323,27 +342,20 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 2: Nemotron-CC"}
+::: {.slide .content footer-center-text="Nemotron-CC"}
 
 # Nemotron-CC: Model-Based Quality Labeling
 
 ## High-Quality Documents Overlap Analysis
 
-| Kategorie | Dokumente | % | Erklärung |
+| Kategorie | Dokumente | Total unique % | Erklärung |
 |-----------|-----------|---|-----------|
 | **Intersection** (alle 3 Classifier) | 1.15M | 10.1% | Dokumente, die von ALLEN 3 Klassifikatoren als High-Quality bewertet wurden |
 | **FineWeb-Edu only** | 4.02M | 35.4% | Nur Mistral 8x22B + Nemotron-340B stimmen überein (DCLM weicht ab) |
 | **DCLM only** | 6.18M | 54.4% | Nur DCLM FastText bewertet als High-Quality (andere Klassifikatoren nicht) |
 
-:::
 
----
-
-::: {.slide .content footer-center-text="Paper 2: Nemotron-CC"}
-
-# Nemotron-CC: Model-Based Quality Labeling
-
-**Common Crawl quality labels statistics**
+## Common Crawl quality labels statistics
 
 | Label | Buckets | Tokens (B) | % |
 |-------|---------|------------|---|
@@ -355,29 +367,35 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 2: Nemotron-CC"}
+::: {.slide .content footer-center-text="Nemotron-CC"}
 
 # Nemotron-CC: Synthetic Data Generation
 
 ## Strategie: Low-Quality vs. High-Quality
 
-**Low-Quality (403B raw → 336B synthetic)**:
+**Low-Quality (403B → 336B)**:
 
 - **Ziel**: Noise/Error Reduction
-- **Methode**: Wikipedia-Style Rephrasing (Mistral NeMo 12B)
-- **Prompt**: "Rewrite as Wikipedia passage, preserve facts"
+- **Methode**: Wikipedia-Style Rephrasing
+- **Resultat**: -16.6% (Qualitätskontrolle)
 
-**High-Quality (451B raw → 1.5T synthetic)**:
+**High-Quality (451B → 1.5T)**:
+
+- **Ziel**: Token Diversity + Knowledge Condensation
+- **Methode**: 5 Prompts (QA, Distill, Extract, List, Wikipedia)
+- **Resultat**: +232% (Unique Token Variants)
+
+→ Verhindert Overfitting durch Repetition (Muennighoff et al.)
 
 :::
 
 ---
 
-::: {.slide .content footer-center-text="Paper 2: Nemotron-CC"}
+::: {.slide .content footer-center-text="Nemotron-CC"}
 
 # Nemotron-CC: Synthetic Data Generation (2)
 
-- **Ziel**: Unique Tokens + Knowledge Condensation
+## Synthetic data token count statistics
 
 | Prompt | Tokens | Beschreibung |
 |--------|--------|--------------|
@@ -392,7 +410,7 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 2: Nemotron-CC"}
+::: {.slide .content footer-center-text="Nemotron-CC"}
 
 # Nemotron-CC: Results
 
@@ -413,7 +431,7 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 2: Nemotron-CC"}
+::: {.slide .content footer-center-text="Nemotron-CC"}
 
 # Nemotron-CC: Results
 
@@ -432,7 +450,7 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 2: Nemotron-CC"}
+::: {.slide .content footer-center-text="Nemotron-CC"}
 
 # Nemotron-CC: Ablations
 
@@ -452,7 +470,7 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 2: Nemotron-CC"}
+::: {.slide .content footer-center-text="Nemotron-CC"}
 
 # Nemotron-CC: Ablations
 
@@ -473,11 +491,11 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 3: FineInstructions"}
+::: {.slide .content footer-center-text="FineInstructions"}
 
 # Paper 3: FineInstructions
 
-**Patel, Raffel, Callison-Burch, 2025 | UPenn + U Toronto + Hugging Face**
+**Patel, Raffel, Callison-Burch, 2026**
 
 ## Ausgangslage
 
@@ -496,7 +514,7 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 3: FineInstructions"}
+::: {.slide .content footer-center-text="FineInstructions"}
 
 # Paper 3: FineInstructions (2)
 
@@ -508,7 +526,7 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 3: FineInstructions"}
+::: {.slide .content footer-center-text="FineInstructions"}
 
 # FineInstructions: Methoden (Pipeline)
 
@@ -532,13 +550,14 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 3: FineInstructions"}
+::: {.slide .content footer-center-text="FineInstructions"}
 
 # FineInstructions: Methoden (Pipeline)
 
 ### 2. Template ⇔ Document Matching
 
 **Embedding Model**: BGE-M3 (fine-tuned 2×)
+
 - **Round 1**: Hard positives/negatives (LLM-judged compatibility)
 - **Round 2**: Gaussian Pooling Layer (K=5 chunks per document)
 
@@ -546,7 +565,7 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 3: FineInstructions"}
+::: {.slide .content footer-center-text="FineInstructions"}
 
 # FineInstructions: Gaussian Pooling (Technical Detail)
 
@@ -567,7 +586,7 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 3: FineInstructions"}
+::: {.slide .content footer-center-text="FineInstructions"}
 
 # FineInstructions: Instantiation & Judging
 
@@ -591,7 +610,7 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 
 ---
 
-::: {.slide .content footer-center-text="Paper 3: FineInstructions"}
+::: {.slide .content footer-center-text="FineInstructions"}
 
 # FineInstructions: Instantiation & Judging
 
@@ -606,12 +625,12 @@ MMLU scores for 8B parameter models trained for 1T tokens.
 
 ---
 
-::: {.slide .image-slide footer-center-text="Paper 3: FineInstructions"}
+::: {.slide .image-slide footer-center-text="FineInstructions"}
 
 # FineInstructions: Methoden (Pipeline)
 
 ::: {.image-container}
-![](doc/assets/2601.22146v1/figure_2.png)
+![](doc/no_doc/assetsts/2601.22146v1/figure_2.png)
 
 ::: {.image-caption}
 The FineInstructions pipeline for efficiently generating diverse, pre-training scale, synthetic instruction-answer pairs.
@@ -622,7 +641,7 @@ The FineInstructions pipeline for efficiently generating diverse, pre-training s
 
 ---
 
-::: {.slide .content footer-center-text="Paper 3: FineInstructions"}
+::: {.slide .content footer-center-text="FineInstructions"}
 
 # FineInstructions: Experiments
 
@@ -632,7 +651,6 @@ The FineInstructions pipeline for efficiently generating diverse, pre-training s
 
 - **IPT** (Instruction Pre-Training): 23B tokens, Q&A from academic NLP
 - **Nemotron-CC**: 300B tokens (Q&A, WRAP, Full Mix)
-- **Standard Pre-Training**: Vanilla documents
 
 **Models**: 1.8B parameters (Llama-3 tokenizer, Lingua framework)
 
@@ -644,9 +662,11 @@ The FineInstructions pipeline for efficiently generating diverse, pre-training s
 
 ---
 
-::: {.slide .content footer-center-text="Paper 3: FineInstructions"}
+::: {.slide .content footer-center-text="FineInstructions"}
 
 # FineInstructions: Experiments (2)
+
+## Benchmarks
 
 - **MixEval**: Academic tasks (MMLU, TriviaQA, etc.) + LLM-as-Judge (GPT-5 mini)
 - **MT-Bench-101**: Realistic user queries, 10-point Likert
@@ -656,45 +676,30 @@ The FineInstructions pipeline for efficiently generating diverse, pre-training s
 
 ---
 
-::: {.slide .content footer-center-text="Paper 3: FineInstructions"}
+::: {.slide .content footer-center-text="FineInstructions"}
 
 # FineInstructions: Results
 
-**Benchmark performance of 1.8B parameter models pre-trained on FineInstructions and various baselines**
+**1.8B parameter models across two pre-training corpora**
 
-## IPT Corpus (23B tokens)
+| Corpus | Method | MixEval Std | MT-Bench | AlpacaEval |
+|--------|--------|-------------|----------|------------|
+| IPT 23B | Standard Pre-Training | 17.8 | 1.9 | +47.2 |
+| IPT 23B | IPT | 19.8 | 2.4 | +36.4 |
+| IPT 23B | FineInstructions | 31.7 | 2.8 | Ref. |
+| Nemotron 300B | Standard Pre-Training | 24.0 | 3.5 | +27.2 |
+| Nemotron 300B | WRAP | 22.8 | 3.6 | +30.2 |
+| Nemotron 300B | Nemotron Q&A | 27.1 | 3.4 | +52.2 |
+| Nemotron 300B | Nemotron-CC Full | 24.5 | 3.6 | +31.8 |
+| Nemotron 300B | FineInstructions | 33.0 | 3.9 | Ref. |
 
-| Method | MixEval Std | MixEval Hard | MT-Bench | AlpacaEval Win % |
-|--------|-------------|--------------|----------|------------------|
-| Standard Pre-Training | 17.8 | 14.0 | 1.9 | 73.6% (vs. FI) |
-| IPT | 19.8 | 16.7 | 2.4 | 68.2% (vs. FI) |
-| **FineInstructions** | **31.7** | **19.2** | **2.8** | **—** |
+AlpacaEval: Win margin for FineInstructions (higher = better)
 
 :::
 
 ---
 
-::: {.slide .content footer-center-text="Paper 3: FineInstructions"}
-
-# FineInstructions: Results
-
-## Nemotron-CC Corpus (300B tokens)
-
-| Method | MixEval Std | MixEval Hard | MT-Bench | AlpacaEval Win % |
-|--------|-------------|--------------|----------|------------------|
-| Standard Pre-Training | 24.0 | 17.1 | 3.5 | 63.6% (vs. FI) |
-| WRAP (Rephrasing) | 22.8 | 18.4 | 3.6 | 65.1% (vs. FI) |
-| Nemotron Q&A | 27.1 | 18.9 | 3.4 | 76.1% (vs. FI) |
-| Nemotron-CC Full | 24.5 | 16.7 | 3.6 | 65.9% (vs. FI) |
-| **FineInstructions** | **33.0** | **21.8** | **3.9** | **—** |
-
-**Key Finding**: +69% MixEval (IPT), +39% (Nemotron-CC) vs. Standard
-
-:::
-
----
-
-::: {.slide .content footer-center-text="Paper 3: FineInstructions"}
+::: {.slide .content footer-center-text="FineInstructions"}
 
 # FineInstructions: Diversity Analysis
 
@@ -702,9 +707,9 @@ The FineInstructions pipeline for efficiently generating diverse, pre-training s
 
 - **4.3M unique templates** verwendet (aus 18M Pool)
 - Kein Template >0.09% der Daten
-- Power-Law: `y = 16,891 * x^0.24` (r²=0.96)
 
 **Quellen-Verteilung**:
+
 - GooAQ: ~50%
 - Reddit QA: ~27%
 - LMSys Chat: ~9%
@@ -714,12 +719,12 @@ The FineInstructions pipeline for efficiently generating diverse, pre-training s
 
 ---
 
-::: {.slide .image-slide footer-center-text="Paper 3: FineInstructions"}
+::: {.slide .image-slide footer-center-text="FineInstructions"}
 
 # FineInstructions: Diversity Analysis
 
 ::: {.image-container}
-![](doc/assets/2601.22146v1/all_sunburst.png)
+![](doc/no_doc/assetsts/2601.22146v1/all_sunburst.png)
 
 ::: {.image-caption}
 A visualization of the task diversity in FineInstructions
@@ -730,27 +735,7 @@ A visualization of the task diversity in FineInstructions
 
 ---
 
-::: {.slide .content footer-center-text="Paper 3: FineInstructions"}
-
-# FineInstructions: Diversity Analysis
-
-**Task-Kategorien** (LLM-klassifiziert):
-
-| Kategorie | % |
-|-----------|---|
-| Science | 36.6% |
-| Medicine | 10.4% |
-| Personal Life | 14.7% |
-| Reasoning Task | 11.0% |
-| "Tasky" vs. Q&A | 6.4% |
-| Math | 0.6% |
-| Code | 0.3% |
-
-:::
-
----
-
-::: {.slide .content footer-center-text="Paper 3: FineInstructions"}
+::: {.slide .content footer-center-text="FineInstructions"}
 
 # FineInstructions: Ablation (Judging Impact)
 
@@ -795,17 +780,6 @@ A visualization of the task diversity in FineInstructions
 
 :::
 
----
-
-# Discussion: Methodische Schwachstellen (2)
-
-**Vergleich zu RefinedWeb/Nemotron**:
-
-- RefinedWeb: Explizite Regeln (Zahlen → `#`, Monate → `month`)
-- Nemotron: Dokumentierte Heuristiken (Justext, FastText)
-- FineInstructions: **Undokumentiert**
-
-:::
 
 ---
 
@@ -817,6 +791,7 @@ A visualization of the task diversity in FineInstructions
 
 **Problem**:
 
+- Erstellung des silver standard
 - "Prompting an LLM with a series of prompts" (Section 3.1)
 
 - **Keine Details** zu:
@@ -837,9 +812,6 @@ A visualization of the task diversity in FineInstructions
 - **50K Silver-Standard Templates** = Foundation für gesamte Pipeline
 - Query Genericizer (Llama-3.2 1B) hängt davon ab
 - **Nicht reproduzierbar** ohne Prompt-Engineering-Details
-
-- Prompt Engineering = Core Contribution
-- Sollte vollständig dokumentiert sein 
 
 :::
 
@@ -875,7 +847,7 @@ A visualization of the task diversity in FineInstructions
 
 # Eigene Forschung: Parallelen zu FineInstructions
 
-**Masterarbeit (2017)**: Maschinelle Analyse sprachlicher Muster in Risikoberichten
+**Masterarbeit (2017)**: Maschinelle Analyse sprachlicher Muster in Risikoberichten - Konzeptionierung und Evaluation inguistischer Modelle zur Beschreibung wirtschaftlicher Entwicklungen
 
 ## Konzeptionelle Übereinstimmung
 
@@ -888,34 +860,7 @@ A visualization of the task diversity in FineInstructions
 | **Weak Supervision** | Implizit (statistisch) | Explizit (Silver-Standard via LLM) |
 
 **Beispiel Phraseframe**: 
-> XXX consider XXX following risk factors
-
-:::
-
----
-
-::: {.slide .content footer-center-text="Eigene Forschung"}
-
-# Methodische Unterschiede & Lessons Learned
-
-## Phraseframes 2017
-
-**Template-basierte Weak Supervision** (Phraseframes als Programmatic Labels)  
-**Automatische Template-Extraktion** (induktiv, korpusbasiert)  
-**Reproduzierbare Algorithmen** (Perl-Skripte, dokumentierte Heuristiken)  
-**Cluster-Bildung** (Levenshtein für ähnliche Templates)  
-
-## FineInstructions 2025 
-
-**LLM-gestützte Template-Generierung** (Llama-3.3 70B statt Regeln)  
-**Semantic Embeddings** (BGE-M3 statt String-Matching)  
-**Distillation Pipeline** (70B → 3B für Skalierung)  
-**Judge-Model** (Flow Judge statt statistische Signifikanz)  
-
-## Trade-off
-
-**2017**: Reproduzierbar, aber begrenzte Skalierung (24K Cluster aus 152K Frames)  
-**2026**: Skaliert auf 1B Paare, aber **Reproduzierbarkeit geopfert** (LLM Black Box)
+XXX consider XXX following risk factors
 
 :::
 
@@ -929,7 +874,7 @@ A visualization of the task diversity in FineInstructions
 |--------|---------------------|-------------------------|
 | **Templates/Frames** | 152K signifikante Frames → 24.654 Cluster | 18M Templates → 1B+ Instruction-Paare |
 | **Dokumente** | 4.456 Risikoberichte (478 Unternehmen × 10 Jahre) | ~100K Pre-Training-Dokumente |
-| **Erfolgsrate** | 81/478 Unternehmen (16.9%) mit signifikanter Korrelation (Return on Assets) | MMLU +5.6 vs. DCLM (1T), +5.0 vs. Llama 3.1 (15T) |
+| **Erfolgsrate** | 81/478 Unternehmen (16.9%) mit signifikanter Korrelation (Return on no_doc/assetsts) | MMLU +5.6 vs. DCLM (1T), +5.0 vs. Llama 3.1 (15T) |
 | **Reproduzierbarkeit** | Vollständige Perl-Skripte, dokumentierte Algorithmen | LLM-Prompts unvollständig, Entity-Replacement undokumentiert |
 | **Skalierungs-Strategie** | Levenshtein-Clustering (Edit-Distanz ≤2) | Distillation (70B → 1B/3B) + FAISS-Index |
 
@@ -955,13 +900,6 @@ A visualization of the task diversity in FineInstructions
 | **Stärke** | Aggressive Deduplication | Classifier-Ensemble | Template Diversity |
 | **Schwäche** | Hohe Removal Rate (77%) | Synthetic Data Hallucinations? | Undokumentierte Prompts |
 
-
-## Was funktioniert (konsistent über alle Papers)
-
-**Aggressive Deduplication** (Fuzzy + Exact)  
-**Model-Based Quality Filtering** (vs. Heuristics)  
-**Synthetic Data Augmentation** (wenn grounded)  
-
 :::
 
 ---
@@ -976,7 +914,7 @@ A visualization of the task diversity in FineInstructions
 - **Nemotron-CC**: Ensemble-Filtering verdoppelt HQ-Recall
 - **FineInstructions**: Format-Alignment (Q&A) verbessert Downstream-Performance
 
-## 2. Skalierung erfordert Trade-offs
+## 2. Skalierung
 
 - **Qualität**: Aggressive Filterung (FineWeb-Edu: 90% Removal)
 - **Quantität**: Weniger Filter + Synthetic Augmentation (Nemotron-CC: 4× mehr Daten)
@@ -994,7 +932,7 @@ A visualization of the task diversity in FineInstructions
 
 ## Details und Code zur Präsentation finden Sie unter:
 
-[Github](https://github.com/Scrottz/fraunhofer_research_paper_analysis)
+[github.com/Scrottz/fraunhofer_research_paper_analysis](https://github.com/Scrottz/fraunhofer_research_paper_analysis)
 
 **Kontakt**: Franz Keilholz, MA.
 
